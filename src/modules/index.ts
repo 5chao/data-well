@@ -1,3 +1,4 @@
 import { ShadiaoModule } from './shadiao/shadiao.module';
+import { ApiproxyModule } from './apiproxy/apiproxy.module';
 
-export default [ShadiaoModule];
+export default [ShadiaoModule, ApiproxyModule];

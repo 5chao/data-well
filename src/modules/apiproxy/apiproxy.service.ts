@@ -5,7 +5,7 @@ import { AxiosResponse } from 'axios';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { ApiLog } from 'src/entites/apilog/apilog.entity';
-import moment from 'moment';
+import * as moment from 'moment';
 
 @Injectable()
 export class ApiproxyService {

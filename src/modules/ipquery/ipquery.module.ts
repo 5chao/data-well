@@ -4,6 +4,6 @@ import { IpqueryController } from './ipquery.controller';
 
 @Module({
   controllers: [IpqueryController],
-  providers: [IpqueryService]
+  providers: [IpqueryService],
 })
 export class IpqueryModule {}

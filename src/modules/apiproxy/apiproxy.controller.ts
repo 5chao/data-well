@@ -1,6 +1,7 @@
 import { Controller, Get, Post, Req } from '@nestjs/common';
 import { Request } from 'express';
 import { map } from 'rxjs';
+import { RealIp } from 'nestjs-real-ip';
 import { ApiproxyService } from './apiproxy.service';
 
 @Controller('apiproxy')
@@ -8,7 +9,7 @@ export class ApiproxyController {
   constructor(private readonly apiproxyService: ApiproxyService) {}
 
   @Post('')
-  requestProxyApi(@Req() request: Request) {
+  requestProxyApi(@Req() request: Request, @RealIp() ip: string) {
     const { api, method, data } = request.body;
 
     if (method == 'post') {
@@ -19,7 +20,7 @@ export class ApiproxyController {
     }
 
     const url = api + this.apiproxyService.parseUrlParams(data);
-
+    this.apiproxyService.addApiLog(api, ip);
     return this.apiproxyService.getProxyApi(url).pipe(map((res) => res.data));
   }
 

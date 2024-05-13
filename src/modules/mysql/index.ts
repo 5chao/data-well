@@ -23,4 +23,4 @@ const devConf: any = {
   synchronize: false,
 };
 
-export default TypeOrmModule.forRoot(devConf);
+export default TypeOrmModule.forRoot(proConf);

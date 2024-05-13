@@ -5,6 +5,7 @@ import { AxiosResponse } from 'axios';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { ApiLog } from 'src/entites/apilog/apilog.entity';
+import moment from 'moment';
 
 @Injectable()
 export class ApiproxyService {
@@ -36,9 +37,12 @@ export class ApiproxyService {
   }
 
   addApiLog(name: string, ip: string) {
+    const date = moment().format('YYYY-MM-DD HH:mm:ss');
     const newApiLog = this.apiLogRepository.create({
       name: name || 'unknown',
       ip,
+      created_time: date,
+      update_time: date,
     });
     return this.apiLogRepository.save(newApiLog);
   }

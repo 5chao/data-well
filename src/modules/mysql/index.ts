@@ -23,4 +23,6 @@ const devConf: any = {
   synchronize: false,
 };
 
-export default TypeOrmModule.forRoot(proConf);
+export default TypeOrmModule.forRoot(
+  process.env.NODE_ENV == 'dev' ? devConf : proConf,
+);

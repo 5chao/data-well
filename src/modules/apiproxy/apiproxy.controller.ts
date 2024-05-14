@@ -10,7 +10,7 @@ export class ApiproxyController {
 
   @Post('')
   requestProxyApi(@Req() request: Request, @RealIp() ip: string) {
-    const { api, method, data } = request.body;
+    const { api, method, data, test } = request.body;
 
     if (method == 'post') {
       // post请求
@@ -20,7 +20,9 @@ export class ApiproxyController {
     }
 
     const url = api + this.apiproxyService.parseUrlParams(data);
-    this.apiproxyService.addApiLog(api, ip);
+    if (!test) {
+      this.apiproxyService.addApiLog(api, ip);
+    }
     return this.apiproxyService.getProxyApi(url).pipe(map((res) => res.data));
   }
 

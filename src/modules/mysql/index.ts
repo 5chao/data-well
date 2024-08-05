@@ -24,5 +24,5 @@ const devConf: any = {
 };
 
 export default TypeOrmModule.forRoot(
-  !process.env.NODE_ENV || process.env.NODE_ENV == 'dev' ? devConf : proConf,
+  process.env.NODE_ENV == 'dev' ? devConf : proConf,
 );

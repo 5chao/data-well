@@ -13,6 +13,7 @@ lerna-debug.log*
 # OS
 .DS_Store
 .history
+/.history
 
 # Tests
 /coverage
